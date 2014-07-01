@@ -7,6 +7,7 @@
 //
 
 #import "UPLAppDelegate.h"
+#import "UPLHomeViewController.h"
 
 @implementation UPLAppDelegate
 
@@ -14,9 +15,11 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    self.window.rootViewController = [[UPLHomeViewController alloc] init];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

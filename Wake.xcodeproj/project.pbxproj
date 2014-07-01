@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A42CF92D1962585800321345 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = A42CF92C1962585800321345 /* Weather.m */; };
+		A49CDF21195CEBCC00D4FD06 /* IDTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A49CDF1E195CEBCC00D4FD06 /* IDTransitionController.m */; };
+		A49CDF22195CEBCC00D4FD06 /* IDTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A49CDF20195CEBCC00D4FD06 /* IDTransitioningDelegate.m */; };
+		A4A14A07195F003500A58AFC /* UIImageView+LBBlurredImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A14A06195F003500A58AFC /* UIImageView+LBBlurredImage.m */; };
+		A4A14A0B1960B5B000A58AFC /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A14A0A1960B5B000A58AFC /* UIImage+ImageEffects.m */; };
 		A4C1B36E195759B900518BF4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C1B36D195759B900518BF4 /* Foundation.framework */; };
 		A4C1B370195759B900518BF4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C1B36F195759B900518BF4 /* CoreGraphics.framework */; };
 		A4C1B372195759B900518BF4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C1B371195759B900518BF4 /* UIKit.framework */; };
@@ -19,6 +24,8 @@
 		A4C1B389195759B900518BF4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C1B371195759B900518BF4 /* UIKit.framework */; };
 		A4C1B391195759B900518BF4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4C1B38F195759B900518BF4 /* InfoPlist.strings */; };
 		A4C1B393195759B900518BF4 /* WakeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C1B392195759B900518BF4 /* WakeTests.m */; };
+		A4C1B39E19575AD400518BF4 /* UPLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C1B39D19575AD400518BF4 /* UPLHomeViewController.m */; };
+		A4C1B3A11957635D00518BF4 /* UPLCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C1B3A01957635D00518BF4 /* UPLCalendarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +39,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A42CF92B1962585800321345 /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
+		A42CF92C1962585800321345 /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
+		A49CDF1D195CEBCC00D4FD06 /* IDTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTransitionController.h; sourceTree = "<group>"; };
+		A49CDF1E195CEBCC00D4FD06 /* IDTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTransitionController.m; sourceTree = "<group>"; };
+		A49CDF1F195CEBCC00D4FD06 /* IDTransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTransitioningDelegate.h; sourceTree = "<group>"; };
+		A49CDF20195CEBCC00D4FD06 /* IDTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTransitioningDelegate.m; sourceTree = "<group>"; };
+		A4A14A05195F003500A58AFC /* UIImageView+LBBlurredImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LBBlurredImage.h"; sourceTree = "<group>"; };
+		A4A14A06195F003500A58AFC /* UIImageView+LBBlurredImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LBBlurredImage.m"; sourceTree = "<group>"; };
+		A4A14A091960B5B000A58AFC /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		A4A14A0A1960B5B000A58AFC /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		A4C1B36A195759B900518BF4 /* Wake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C1B36D195759B900518BF4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A4C1B36F195759B900518BF4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +65,10 @@
 		A4C1B38E195759B900518BF4 /* WakeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WakeTests-Info.plist"; sourceTree = "<group>"; };
 		A4C1B390195759B900518BF4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A4C1B392195759B900518BF4 /* WakeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WakeTests.m; sourceTree = "<group>"; };
+		A4C1B39C19575AD400518BF4 /* UPLHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPLHomeViewController.h; sourceTree = "<group>"; };
+		A4C1B39D19575AD400518BF4 /* UPLHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPLHomeViewController.m; sourceTree = "<group>"; };
+		A4C1B39F1957635D00518BF4 /* UPLCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPLCalendarViewController.h; sourceTree = "<group>"; };
+		A4C1B3A01957635D00518BF4 /* UPLCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPLCalendarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +95,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A49CDF1C195CEBCC00D4FD06 /* Transitioning */ = {
+			isa = PBXGroup;
+			children = (
+				A49CDF1D195CEBCC00D4FD06 /* IDTransitionController.h */,
+				A49CDF1E195CEBCC00D4FD06 /* IDTransitionController.m */,
+				A49CDF1F195CEBCC00D4FD06 /* IDTransitioningDelegate.h */,
+				A49CDF20195CEBCC00D4FD06 /* IDTransitioningDelegate.m */,
+			);
+			path = Transitioning;
+			sourceTree = "<group>";
+		};
+		A4A14A081960B01300A58AFC /* ImageBlur */ = {
+			isa = PBXGroup;
+			children = (
+				A4A14A091960B5B000A58AFC /* UIImage+ImageEffects.h */,
+				A4A14A0A1960B5B000A58AFC /* UIImage+ImageEffects.m */,
+				A4A14A05195F003500A58AFC /* UIImageView+LBBlurredImage.h */,
+				A4A14A06195F003500A58AFC /* UIImageView+LBBlurredImage.m */,
+			);
+			name = ImageBlur;
+			sourceTree = "<group>";
+		};
 		A4C1B361195759B900518BF4 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +152,14 @@
 			children = (
 				A4C1B37C195759B900518BF4 /* UPLAppDelegate.h */,
 				A4C1B37D195759B900518BF4 /* UPLAppDelegate.m */,
+				A4C1B39C19575AD400518BF4 /* UPLHomeViewController.h */,
+				A4C1B39D19575AD400518BF4 /* UPLHomeViewController.m */,
+				A4C1B39F1957635D00518BF4 /* UPLCalendarViewController.h */,
+				A4C1B3A01957635D00518BF4 /* UPLCalendarViewController.m */,
+				A42CF92B1962585800321345 /* Weather.h */,
+				A42CF92C1962585800321345 /* Weather.m */,
+				A4A14A081960B01300A58AFC /* ImageBlur */,
+				A49CDF1C195CEBCC00D4FD06 /* Transitioning */,
 				A4C1B37F195759B900518BF4 /* Images.xcassets */,
 				A4C1B374195759B900518BF4 /* Supporting Files */,
 			);
@@ -240,6 +291,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A42CF92D1962585800321345 /* Weather.m in Sources */,
+				A4A14A0B1960B5B000A58AFC /* UIImage+ImageEffects.m in Sources */,
+				A49CDF21195CEBCC00D4FD06 /* IDTransitionController.m in Sources */,
+				A49CDF22195CEBCC00D4FD06 /* IDTransitioningDelegate.m in Sources */,
+				A4C1B3A11957635D00518BF4 /* UPLCalendarViewController.m in Sources */,
+				A4C1B39E19575AD400518BF4 /* UPLHomeViewController.m in Sources */,
+				A4A14A07195F003500A58AFC /* UIImageView+LBBlurredImage.m in Sources */,
 				A4C1B37E195759B900518BF4 /* UPLAppDelegate.m in Sources */,
 				A4C1B37A195759B900518BF4 /* main.m in Sources */,
 			);
@@ -438,6 +496,7 @@
 				A4C1B398195759B900518BF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A4C1B399195759B900518BF4 /* Build configuration list for PBXNativeTarget "WakeTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +505,7 @@
 				A4C1B39B195759B900518BF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
