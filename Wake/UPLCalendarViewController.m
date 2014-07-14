@@ -125,34 +125,34 @@
 }
 
 //Spring Animation
-- (void)showAnimate
-{
-    self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
-    self.view.alpha = 0;
-    
-    [UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:10 options:UIViewAnimationOptionTransitionNone animations:^{
-        self.view.alpha = 1;
-        self.view.transform = CGAffineTransformMakeScale(1, 1);
-    }completion:nil];
-    
-    //[UIView animateWithDuration:.75 animations:^{
-      //  self.view.alpha = 1;
-      //  self.view.transform = CGAffineTransformMakeScale(1, 1);
-    //}];
-}
-
-- (void)removeAnimate
-{
-    
-    [UIView animateWithDuration:0.25 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:10 options:UIViewAnimationOptionTransitionNone animations:^{
-        self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
-        self.view.alpha = 0.0;
-    }completion:^(BOOL finished) {
-        if (finished)
-            [self.view removeFromSuperview];
-    }];
-
-}
+//- (void)showAnimate
+//{
+//    self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
+//    self.view.alpha = 0;
+//    
+//    [UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:10 options:UIViewAnimationOptionTransitionNone animations:^{
+//        self.view.alpha = 1;
+//        self.view.transform = CGAffineTransformMakeScale(1, 1);
+//    }completion:nil];
+//    
+//    //[UIView animateWithDuration:.75 animations:^{
+//      //  self.view.alpha = 1;
+//      //  self.view.transform = CGAffineTransformMakeScale(1, 1);
+//    //}];
+//}
+//
+//- (void)removeAnimate
+//{
+//    
+//    [UIView animateWithDuration:0.25 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:10 options:UIViewAnimationOptionTransitionNone animations:^{
+//        self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
+//        self.view.alpha = 0.0;
+//    }completion:^(BOOL finished) {
+//        if (finished)
+//            [self.view removeFromSuperview];
+//    }];
+//
+//}
 
 - (void)close
 {

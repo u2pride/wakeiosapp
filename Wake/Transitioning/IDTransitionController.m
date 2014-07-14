@@ -32,7 +32,7 @@
         [inView addSubview:toView];
     }
     
-    CGFloat damping = self.reverse ? 1 : 0.6;
+    CGFloat damping = self.reverse ? 1.0 : 0.8;
     NSTimeInterval duration = [self transitionDuration:context];
 
     [toView setUserInteractionEnabled: true];

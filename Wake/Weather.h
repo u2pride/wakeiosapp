@@ -29,13 +29,13 @@
 @property (nonatomic, readonly) NSInteger pressure;
 @property (nonatomic, readonly) NSInteger rain3hours;
 @property (nonatomic, readonly) NSInteger snow3hours;
-@property (nonatomic, readonly) CGFloat tempCurrent;
+@property (nonatomic, strong) NSNumber *tempCurrent;
 @property (nonatomic, readonly) CGFloat tempMin;
 @property (nonatomic, readonly) CGFloat tempMax;
 @property (nonatomic, readonly) NSInteger windDirection;
 @property (nonatomic, readonly) CGFloat windSpeed;
 
-- (void)getCurrent:(NSString *)query;
+- (void)getCurrentWithLat:(double)latitude withLong:(double)longitude;
 
 
 @end
