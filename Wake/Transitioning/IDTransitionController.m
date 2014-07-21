@@ -11,7 +11,7 @@
 @implementation IDTransitionController
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
-    return self.reverse ? 0.8 : 1.6;
+    return self.reverse ? 1.0 : 1.2;
 }
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)context
@@ -38,7 +38,7 @@
     [toView setUserInteractionEnabled: true];
     [fromView setUserInteractionEnabled: false];
     
-    [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:damping initialSpringVelocity:1.0 options:0 animations:^{
+    [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:damping initialSpringVelocity:6.0 options:0 animations:^{
         if (self.reverse) {
             fromView.transform = CGAffineTransformMakeScale(0, 0);
         }

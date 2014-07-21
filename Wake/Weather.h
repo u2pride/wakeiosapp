@@ -30,8 +30,8 @@
 @property (nonatomic, readonly) NSInteger rain3hours;
 @property (nonatomic, readonly) NSInteger snow3hours;
 @property (nonatomic, strong) NSNumber *tempCurrent;
-@property (nonatomic, readonly) CGFloat tempMin;
-@property (nonatomic, readonly) CGFloat tempMax;
+@property (nonatomic, strong) NSNumber *tempMin;
+@property (nonatomic, strong) NSNumber *tempMax;
 @property (nonatomic, readonly) NSInteger windDirection;
 @property (nonatomic, readonly) CGFloat windSpeed;
 

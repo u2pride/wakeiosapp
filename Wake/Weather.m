@@ -21,9 +21,7 @@
 {
     self = [super init];
     weatherServiceResponse = @{};
-    NSLog(@"INIT BEFORE SET %@", tempCurrent);
     tempCurrent = [NSNumber numberWithInt:0];
-    NSLog(@"INIT AFTER SET %@", tempCurrent);
 
     return self;
 }
@@ -60,8 +58,6 @@
 {
     
     //NSArray *temperature = [[json objectForKey:@"main"] objectForKey:@"temp"];
-
-
     
     _cloudCover = [[[weatherServiceResponse objectForKey:@"clouds"] objectForKey:@"all"] integerValue];
     
@@ -74,8 +70,12 @@
     _humidity = [[[weatherServiceResponse objectForKey:@"main"] objectForKey:@"humidity"] integerValue];
     _pressure = [[[weatherServiceResponse objectForKey:@"main"] objectForKey:@"pressure"] integerValue];
     tempCurrent = [NSNumber numberWithDouble:[Weather kelvinToF:[[[weatherServiceResponse objectForKey:@"main"] objectForKey:@"temp"] doubleValue]]];
-    _tempMin = [Weather kelvinToF:[[[weatherServiceResponse objectForKey:@"main"] objectForKey:@"temp_min"] doubleValue]];
-    _tempMax = [Weather kelvinToF:[[[weatherServiceResponse objectForKey:@"main"] objectForKey:@"temp_max"] doubleValue]];
+    
+    //_tempMin = [Weather kelvinToF:[[[weatherServiceResponse objectForKey:@"main"] objectForKey:@"temp_min"] doubleValue]];
+    //_tempMax = [Weather kelvinToF:[[[weatherServiceResponse objectForKey:@"main"] objectForKey:@"temp_max"] doubleValue]];
+
+    _tempMin = [NSNumber numberWithDouble:[Weather kelvinToF:[[[weatherServiceResponse objectForKey:@"main"] objectForKey:@"temp_min"] doubleValue]]];
+    _tempMax = [NSNumber numberWithDouble:[Weather kelvinToF:[[[weatherServiceResponse objectForKey:@"main"] objectForKey:@"temp_max"] doubleValue]]];
 
     _city = [weatherServiceResponse objectForKey:@"name"];
     
@@ -94,18 +94,19 @@
     _windDirection = [[[weatherServiceResponse objectForKey:@"wind"] objectForKey:@"dir"] integerValue];
     _windSpeed = [[[weatherServiceResponse objectForKey:@"wind"] objectForKey:@"speed"] doubleValue];
   
+    NSArray *temperatures = [NSArray arrayWithObjects:tempCurrent, _tempMax, _tempMin, nil];
     
-    [[UPLHomeViewController sharedInstance] updatedWeather:[tempCurrent intValue]];
+    [[UPLHomeViewController sharedInstance] updatedWeather:temperatures];
+    //[[UPLHomeViewController sharedInstance] updatedWeather:[tempCurrent intValue]];
     //UPLHomeViewController *vc = (UPLHomeViewController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
     //[vc updatedWeather:[tempCurrent intValue]];
     
-    NSLog(@"Parse END %@", tempCurrent);
 }
 
 + (double)kelvinToF:(double)degreesKelvin
 {
     const double ZERO_CELSIUS_IN_KELVIN = 273.15;
-    return (degreesKelvin - ZERO_CELSIUS_IN_KELVIN) * 1.80;
+    return ((degreesKelvin - ZERO_CELSIUS_IN_KELVIN) * 1.80) + 32;
 }
 
 

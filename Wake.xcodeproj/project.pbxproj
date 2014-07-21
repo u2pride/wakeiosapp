@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		A42CF92D1962585800321345 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = A42CF92C1962585800321345 /* Weather.m */; };
+		A436A7E3197D56D4003CF07B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A436A7E2197D56D4003CF07B /* CoreLocation.framework */; };
+		A436A7E5197D772E003CF07B /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A436A7E4197D772E003CF07B /* AddressBookUI.framework */; };
+		A464C78B1976B3B30002FCAA /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = A464C78A1976B3B30002FCAA /* Exercise.m */; };
 		A471B4F4197355B3002DF04B /* UPLExercisesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A471B4F3197355B3002DF04B /* UPLExercisesViewController.m */; };
 		A49CDF21195CEBCC00D4FD06 /* IDTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A49CDF1E195CEBCC00D4FD06 /* IDTransitionController.m */; };
 		A49CDF22195CEBCC00D4FD06 /* IDTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A49CDF20195CEBCC00D4FD06 /* IDTransitioningDelegate.m */; };
 		A4A14A07195F003500A58AFC /* UIImageView+LBBlurredImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A14A06195F003500A58AFC /* UIImageView+LBBlurredImage.m */; };
 		A4A14A0B1960B5B000A58AFC /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A14A0A1960B5B000A58AFC /* UIImage+ImageEffects.m */; };
+		A4AA11E519745CA700E9817C /* ExerciseTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AA11E419745CA700E9817C /* ExerciseTableCell.xib */; };
+		A4AA11E81974BDAA00E9817C /* UPLExerciseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA11E71974BDAA00E9817C /* UPLExerciseCell.m */; };
 		A4C1B36E195759B900518BF4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C1B36D195759B900518BF4 /* Foundation.framework */; };
 		A4C1B370195759B900518BF4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C1B36F195759B900518BF4 /* CoreGraphics.framework */; };
 		A4C1B372195759B900518BF4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C1B371195759B900518BF4 /* UIKit.framework */; };
@@ -42,6 +47,10 @@
 /* Begin PBXFileReference section */
 		A42CF92B1962585800321345 /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
 		A42CF92C1962585800321345 /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
+		A436A7E2197D56D4003CF07B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A436A7E4197D772E003CF07B /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		A464C7891976B3B30002FCAA /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
+		A464C78A1976B3B30002FCAA /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		A471B4F2197355B3002DF04B /* UPLExercisesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPLExercisesViewController.h; sourceTree = "<group>"; };
 		A471B4F3197355B3002DF04B /* UPLExercisesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPLExercisesViewController.m; sourceTree = "<group>"; };
 		A49CDF1D195CEBCC00D4FD06 /* IDTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTransitionController.h; sourceTree = "<group>"; };
@@ -52,6 +61,9 @@
 		A4A14A06195F003500A58AFC /* UIImageView+LBBlurredImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LBBlurredImage.m"; sourceTree = "<group>"; };
 		A4A14A091960B5B000A58AFC /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		A4A14A0A1960B5B000A58AFC /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		A4AA11E419745CA700E9817C /* ExerciseTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExerciseTableCell.xib; path = ../ExerciseTableCell.xib; sourceTree = "<group>"; };
+		A4AA11E61974BDAA00E9817C /* UPLExerciseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPLExerciseCell.h; sourceTree = "<group>"; };
+		A4AA11E71974BDAA00E9817C /* UPLExerciseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPLExerciseCell.m; sourceTree = "<group>"; };
 		A4C1B36A195759B900518BF4 /* Wake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C1B36D195759B900518BF4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A4C1B36F195759B900518BF4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A436A7E5197D772E003CF07B /* AddressBookUI.framework in Frameworks */,
+				A436A7E3197D56D4003CF07B /* CoreLocation.framework in Frameworks */,
 				A4C1B370195759B900518BF4 /* CoreGraphics.framework in Frameworks */,
 				A4C1B372195759B900518BF4 /* UIKit.framework in Frameworks */,
 				A4C1B36E195759B900518BF4 /* Foundation.framework in Frameworks */,
@@ -142,6 +156,8 @@
 		A4C1B36C195759B900518BF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A436A7E4197D772E003CF07B /* AddressBookUI.framework */,
+				A436A7E2197D56D4003CF07B /* CoreLocation.framework */,
 				A4C1B36D195759B900518BF4 /* Foundation.framework */,
 				A4C1B36F195759B900518BF4 /* CoreGraphics.framework */,
 				A4C1B371195759B900518BF4 /* UIKit.framework */,
@@ -163,6 +179,11 @@
 				A471B4F3197355B3002DF04B /* UPLExercisesViewController.m */,
 				A42CF92B1962585800321345 /* Weather.h */,
 				A42CF92C1962585800321345 /* Weather.m */,
+				A4AA11E419745CA700E9817C /* ExerciseTableCell.xib */,
+				A4AA11E61974BDAA00E9817C /* UPLExerciseCell.h */,
+				A4AA11E71974BDAA00E9817C /* UPLExerciseCell.m */,
+				A464C7891976B3B30002FCAA /* Exercise.h */,
+				A464C78A1976B3B30002FCAA /* Exercise.m */,
 				A4A14A081960B01300A58AFC /* ImageBlur */,
 				A49CDF1C195CEBCC00D4FD06 /* Transitioning */,
 				A4C1B37F195759B900518BF4 /* Images.xcassets */,
@@ -278,6 +299,7 @@
 			files = (
 				A4C1B378195759B900518BF4 /* InfoPlist.strings in Resources */,
 				A4C1B380195759B900518BF4 /* Images.xcassets in Resources */,
+				A4AA11E519745CA700E9817C /* ExerciseTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A42CF92D1962585800321345 /* Weather.m in Sources */,
+				A464C78B1976B3B30002FCAA /* Exercise.m in Sources */,
 				A4A14A0B1960B5B000A58AFC /* UIImage+ImageEffects.m in Sources */,
 				A49CDF21195CEBCC00D4FD06 /* IDTransitionController.m in Sources */,
 				A49CDF22195CEBCC00D4FD06 /* IDTransitioningDelegate.m in Sources */,
@@ -304,6 +327,7 @@
 				A4C1B3A11957635D00518BF4 /* UPLCalendarViewController.m in Sources */,
 				A4C1B39E19575AD400518BF4 /* UPLHomeViewController.m in Sources */,
 				A4A14A07195F003500A58AFC /* UIImageView+LBBlurredImage.m in Sources */,
+				A4AA11E81974BDAA00E9817C /* UPLExerciseCell.m in Sources */,
 				A4C1B37E195759B900518BF4 /* UPLAppDelegate.m in Sources */,
 				A4C1B37A195759B900518BF4 /* main.m in Sources */,
 			);

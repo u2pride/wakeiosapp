@@ -11,15 +11,17 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface UPLHomeViewController : UIViewController <CLLocationManagerDelegate>
-{
-    CLLocationManager *locationManager;
-}
 
 @property (nonatomic, strong) NSArray *calendarEvents;
 @property (nonatomic) BOOL isComingFromCalendarView;
+@property (nonatomic) BOOL isComingFromExerciseView;
 @property (nonatomic, strong) Weather *weatherData;
 
+@property (nonatomic, strong) CLLocationManager *locationManager;
+
 + (id)sharedInstance;
-- (void)updatedWeather:(int)temperature;
+- (void)updatedWeather:(NSArray *)temperatures;
+
+//SIGKILL area on grabbing calendar events??
 
 @end
