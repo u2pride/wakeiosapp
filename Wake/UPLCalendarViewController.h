@@ -11,7 +11,8 @@
 
 @interface UPLCalendarViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSArray *calendarEvents;
+@property (nonatomic, strong) NSArray *calendarEventsToday;
+@property (nonatomic, strong) NSArray *calendarEventsTomorrow;
 @property (nonatomic, strong) UITableView *calendarTableView;
 
 @end

@@ -9,15 +9,21 @@
 #import "UPLCalendarViewController.h"
 #import "UPLHomeViewController.h"
 #import <EventKit/EventKit.h>
+#import <POP/POP.h>
 
 
 @interface UPLCalendarViewController ()
+{
+    BOOL showTodaysEvents; // somehow prevent the animation from running again on the table cells?
+}
+
+@property (nonatomic, strong) UILabel *calendarHeader;
 
 @end
 
 @implementation UPLCalendarViewController
 
-@synthesize calendarEvents, calendarTableView;
+@synthesize calendarEventsToday, calendarEventsTomorrow, calendarTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +40,7 @@
 {
     [super viewDidLoad];
     
+    showTodaysEvents = TRUE;
     
     self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0];
     
@@ -49,14 +56,15 @@
     [self.calendarTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:self.calendarTableView];
     
-    UILabel *calendarHeader = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, screenWidth - 40, 60)];
-    calendarHeader.textColor = [UIColor whiteColor];
-    calendarHeader.text = @"Calendar";
-    calendarHeader.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:50];
-    [self.view addSubview:calendarHeader];
+    _calendarHeader = [[UILabel alloc] initWithFrame:CGRectMake(15, 18, screenWidth - 40, 60)];
+    _calendarHeader.textColor = [UIColor whiteColor];
+    _calendarHeader.text = @"Today";
+    _calendarHeader.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:50];
+    _calendarHeader.userInteractionEnabled = TRUE;
+    [self.view addSubview:_calendarHeader];
     
     
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth - 100, 30, 100, 30)];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth - 100, 40, 100, 30)];
     [closeButton setTitle:@"X" forState:UIControlStateNormal];
     [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     closeButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:40];
@@ -64,6 +72,8 @@
     
     [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     
+    [_calendarHeader addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(switchDays)]];
+
     
     //[self showAnimate];
     
@@ -75,6 +85,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)switchDays
+{
+    if (showTodaysEvents){
+        _calendarHeader.text = @"Tomorrow";
+        showTodaysEvents = FALSE;
+    } else {
+        _calendarHeader.text = @"Today";
+        showTodaysEvents = TRUE;
+    }
+    
+    [self.calendarTableView reloadData];
+    
+    
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -82,8 +108,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%d", calendarEvents.count);
-    return self.calendarEvents.count;
+    if (showTodaysEvents) {
+        return self.calendarEventsToday.count;
+    } else {
+        return self.calendarEventsTomorrow.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -96,7 +125,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
-    EKEvent *event = [calendarEvents objectAtIndex:indexPath.row];
+    EKEvent *event;
+    if (showTodaysEvents) {
+        event = [calendarEventsToday objectAtIndex:indexPath.row];
+    } else {
+        event = [calendarEventsTomorrow objectAtIndex:indexPath.row];
+    }
     
     cell.textLabel.text = [event valueForKeyPath:@"title"];
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
@@ -117,6 +151,80 @@
     
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGRect initialBounds = cell.layer.bounds;
+    CGRect finalBounds = CGRectMake(cell.layer.bounds.origin.x - 100, cell.layer.bounds.origin.y, cell.layer.bounds.size.width + 1000, cell.layer.bounds.size.height);
+    float offset = (indexPath.row) / 2.9f;
+    cell.layer.opacity = 0;
+    
+    POPSpringAnimation *cellPop = [POPSpringAnimation animation];
+    cellPop.property = [POPAnimatableProperty propertyWithName:kPOPLayerBounds];
+    cellPop.fromValue = [NSValue valueWithCGRect:finalBounds];
+    cellPop.toValue = [NSValue valueWithCGRect:initialBounds];
+    cellPop.springBounciness = 10.0;
+    cellPop.springSpeed = 0.6;
+    cellPop.beginTime = CACurrentMediaTime() + offset;
+
+    [cell.layer pop_addAnimation:cellPop forKey:@"cellPop"];
+//    
+//    POPSpringAnimation *cellPopOpacity = [POPSpringAnimation animation];
+//    cellPopOpacity.property = [POPAnimatableProperty propertyWithName:kPOPViewAlpha];
+//    cellPopOpacity.fromValue = @(0.0);
+//    cellPopOpacity.toValue = @(1.0);
+//    cellPopOpacity.springBounciness = 10.0;
+//    cellPopOpacity.springSpeed = 0.2;
+//    cellPopOpacity.velocity = @(1.0);
+//    
+//    [cell pop_addAnimation:cellPopOpacity forKey:@"popOpacity"];
+    
+
+    
+    POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+    opacityAnimation.fromValue = @(0);
+    opacityAnimation.toValue = @(1);
+    opacityAnimation.duration = 2.0f;
+    opacityAnimation.beginTime = CACurrentMediaTime() + offset;
+    [cell.layer pop_addAnimation:opacityAnimation forKey:@"opacityAnimation"];
+    
+    
+    
+    /* Scaling and Position Animation with Pop
+    POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    scaleAnimation.fromValue  = [NSValue valueWithCGSize:CGSizeMake(0.1f, 0.1f)];
+    scaleAnimation.toValue  = [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)];//@(0.0f);
+    scaleAnimation.springBounciness = 20.0f;
+    scaleAnimation.springSpeed = 5.0f;
+    scaleAnimation.beginTime = CACurrentMediaTime() + 1.0;
+    [cell.layer pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+    */
+     
+    /*  Sweet Z Axis Animation
+    //1. Setup the CATransform3D structure
+    CATransform3D rotation;
+    rotation = CATransform3DMakeRotation( (90.0*M_PI)/180, 0.0, 0.7, 0.4);
+    rotation.m34 = 1.0/ -600;
+    
+    
+    //2. Define the initial state (Before the animation)
+    cell.layer.shadowColor = [[UIColor blackColor]CGColor];
+    cell.layer.shadowOffset = CGSizeMake(10, 10);
+    cell.alpha = 0;
+    
+    cell.layer.transform = rotation;
+    cell.layer.anchorPoint = CGPointMake(0, 0.5);
+    
+    
+    //3. Define the final state (After the animation) and commit the animation
+    [UIView beginAnimations:@"rotation" context:NULL];
+    [UIView setAnimationDuration:0.8];
+    cell.layer.transform = CATransform3DIdentity;
+    cell.alpha = 1;
+    cell.layer.shadowOffset = CGSizeMake(0, 0);
+    [UIView commitAnimations];
+     */
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

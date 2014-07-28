@@ -33,6 +33,7 @@
         self.exerciseTableView.dataSource = self;
         self.exerciseTableView.rowHeight = 60;
         self.exerciseTableView.backgroundColor = [UIColor clearColor];
+        self.exerciseTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         //self.exerciseTableView.backgroundView.alpha = 0;
         [self.view addSubview:self.exerciseTableView];
         
@@ -123,6 +124,11 @@
     newCell.backgroundColor = [UIColor clearColor];
 
     return newCell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 70;
 }
 
 - (void)addNewExercise {

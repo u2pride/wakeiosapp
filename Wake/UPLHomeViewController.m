@@ -36,6 +36,13 @@
 @property (nonatomic, strong) UILabel *stockNum3Label;
 @property (nonatomic, strong) UILabel *stockNum4Label;
 
+//Calendar Events
+@property (nonatomic, strong) UILabel *calenderEvent1;
+@property (nonatomic, strong) UILabel *calenderEvent2;
+@property (nonatomic, strong) UILabel *calenderEvent3;
+@property (nonatomic, strong) UILabel *calenderEvent4;
+
+
 @end
 
 @implementation UPLHomeViewController
@@ -43,7 +50,7 @@
     Weather *theWeather;
 }
 
-@synthesize calendarEvents, weatherTemperatureLabel, weatherHiTemperatureLabel, weatherLoTemperatureLabel, numCalendarEventsLabel, stockNum1Label, stockNum2Label, stockNum3Label, stockNum4Label, weatherHiTemperatureNumber, weatherLoTemperatureNumber, locationCity, locationManager;
+@synthesize calendarEventsToday, calendarEventsTomorrow, weatherTemperatureLabel, weatherHiTemperatureLabel, weatherLoTemperatureLabel, numCalendarEventsLabel, stockNum1Label, stockNum2Label, stockNum3Label, stockNum4Label, weatherHiTemperatureNumber, weatherLoTemperatureNumber, locationCity, locationManager, calenderEvent1, calenderEvent2, calenderEvent3, calenderEvent4;
 
 + (instancetype)sharedInstance
 {
@@ -68,6 +75,9 @@
         [locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
         
         [locationManager startUpdatingLocation];
+        
+        calendarEventsToday = [[NSArray alloc] init];
+        calendarEventsTomorrow = [[NSArray alloc] init];
     }
     return self;
 }
@@ -77,64 +87,56 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundImage"]];
-    
     self.blurredImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     self.blurredImageView.image = [UIImage imageNamed:@"BackgroundImage"];
     
-    UIButton *calendarEventsButton= [[UIButton alloc] initWithFrame:CGRectMake(0, 310, self.view.frame.size.width, 50)];
-    calendarEventsButton.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0];
-    [calendarEventsButton setTitle:@"I meet people." forState:UIControlStateNormal];
-    calendarEventsButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:32];
-    calendarEventsButton.titleLabel.textColor = [UIColor whiteColor];
-    calendarEventsButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    calendarEventsButton.layer.cornerRadius = 2;
-    [self.view addSubview:calendarEventsButton];
     
-    [calendarEventsButton addTarget:self action:@selector(showTodaysCalendarEvents) forControlEvents:UIControlEventTouchUpInside];
+
     
-    UIButton *exercisesButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 180, self.view.frame.size.width, 50)];
-    exercisesButton.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0];
-    [exercisesButton setTitle:@"I work out." forState:UIControlStateNormal];
-    exercisesButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:32];
-    exercisesButton.titleLabel.textColor = [UIColor whiteColor];
-    exercisesButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    exercisesButton.layer.cornerRadius = 2;
-    exercisesButton.layer.borderWidth = 0;
-    [self.view addSubview:exercisesButton];
+
+    // Calendar - Num of Events and Transparent Event Title Labels
+    // ----------------------------------------------
     
-    [exercisesButton addTarget:self action:@selector(showExercises) forControlEvents:UIControlEventTouchUpInside];
+    //Calendar - number of events
+    //numCalendarEventsLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 280, 100, 50)];
+    //numCalendarEventsLabel.text = @"1";
+    //numCalendarEventsLabel.textColor = [UIColor whiteColor];
+    //numCalendarEventsLabel.textAlignment = NSTextAlignmentCenter;
+    //numCalendarEventsLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:30];
+    //[self.view addSubview:numCalendarEventsLabel];
     
+    calenderEvent1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 255, self.view.frame.size.width, 50)];
+    calenderEvent1.text = @"Wake & Gym @ 7am";
+    calenderEvent1.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:32];
+    calenderEvent1.textAlignment = NSTextAlignmentCenter;
+    calenderEvent1.textColor = [UIColor blueColor];
+    calenderEvent1.alpha = 0.4;
+    [self.view addSubview:calenderEvent1];
     
+    calenderEvent2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 290, self.view.frame.size.width, 50)];
+    calenderEvent2.text = @"Coffee with Lisa @ 10am";
+    calenderEvent2.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:32];
+    calenderEvent2.textAlignment = NSTextAlignmentCenter;
+    calenderEvent2.textColor = [UIColor blueColor];
+    calenderEvent2.alpha = 0.4;
+    [self.view addSubview:calenderEvent2];
+
+    calenderEvent3 = [[UILabel alloc] initWithFrame:CGRectMake(0, 325, self.view.frame.size.width, 50)];
+    calenderEvent3.text = @"Meeting with Bobby @ 1pm";
+    calenderEvent3.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:32];
+    calenderEvent3.textAlignment = NSTextAlignmentCenter;
+    calenderEvent3.textColor = [UIColor blueColor];
+    calenderEvent3.alpha = 0.4;
+    [self.view addSubview:calenderEvent3];
     
-    // Code for Animating a Cool Effect on the buttons
-//    CGRect pathFrame = CGRectMake(-CGRectGetMidX(exercisesButton.bounds), -CGRectGetMidY(exercisesButton.bounds), exercisesButton.bounds.size.width, exercisesButton.bounds.size.height);
-//    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:pathFrame cornerRadius:exercisesButton.layer.cornerRadius];
-//    
-//    CAShapeLayer *circleShape = [CAShapeLayer layer];
-//    circleShape.path = path.CGPath;
-//    circleShape.position = exercisesButton.layer.position;
-//    circleShape.fillColor = [UIColor clearColor].CGColor;
-//    circleShape.opacity = 0;
-//    circleShape.strokeColor = [UIColor blackColor].CGColor;
-//    circleShape.lineWidth = 1.0f;
-//    
-//    [self.view.layer addSublayer:circleShape];
-//    
-//    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-//    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-//    scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(2.5, 2.5, 1)];
-//    
-//    CABasicAnimation *alphaAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-//    alphaAnimation.fromValue = @1;
-//    alphaAnimation.toValue = @0;
-//    
-//    CAAnimationGroup *animation = [CAAnimationGroup animation];
-//    animation.animations = @[scaleAnimation, alphaAnimation];
-//    animation.duration = 1.5f;
-//    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-//    [circleShape addAnimation:animation forKey:nil];
+    calenderEvent4 = [[UILabel alloc] initWithFrame:CGRectMake(0, 360, self.view.frame.size.width, 50)];
+    calenderEvent4.text = @"Friend Dinner @ 5pm";
+    calenderEvent4.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:32];
+    calenderEvent4.textAlignment = NSTextAlignmentCenter;
+    calenderEvent4.textColor = [UIColor blueColor];
+    calenderEvent4.alpha = 0.4;
+    [self.view addSubview:calenderEvent4];
     
     
     //Weather Information
@@ -176,22 +178,30 @@
     [self.view addSubview:weatherLoTemperatureNumber];
     
     
-    
-    //Calendar
-    numCalendarEventsLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 280, 100, 50)];
-    numCalendarEventsLabel.text = @"1";
-    numCalendarEventsLabel.textColor = [UIColor whiteColor];
-    numCalendarEventsLabel.textAlignment = NSTextAlignmentCenter;
-    numCalendarEventsLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:30];
-    [self.view addSubview:numCalendarEventsLabel];
-    
-    //Location
-    locationCity = [[UILabel alloc] initWithFrame:CGRectMake(180, 70, 120, 50)];
+    //Location Label
+    locationCity = [[UILabel alloc] initWithFrame:CGRectMake(200, 70, 100, 50)];
     locationCity.text = @"San Fran";
     locationCity.textColor = [UIColor whiteColor];
-    locationCity.textAlignment = NSTextAlignmentCenter;
-    locationCity.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:15];
+    locationCity.textAlignment = NSTextAlignmentLeft;
+    locationCity.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:18];
     [self.view addSubview:locationCity];
+    
+    
+    
+    
+    
+    // Three Main Buttons.  I work out.  I meet people. I dream... - Added last.
+    // ----------------------------------------------
+    
+    [self createButton:@"I work out." withRect:CGRectMake(0, 180, self.view.frame.size.width, 50)];
+    [self createButton:@"I meet people." withRect:CGRectMake(0, 310, self.view.frame.size.width, 50)];
+    [self createButton:@"I dream big." withRect:CGRectMake(0, 450, self.view.frame.size.width, 50)];
+    
+    
+    
+    
+    
+    
     
     
     //Stocks
@@ -223,6 +233,34 @@
 //    stockNum4Label.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20];
 //    [self.view addSubview:stockNum4Label];
     
+    // Code for Animating a Cool Effect on the buttons
+    //    CGRect pathFrame = CGRectMake(-CGRectGetMidX(exercisesButton.bounds), -CGRectGetMidY(exercisesButton.bounds), exercisesButton.bounds.size.width, exercisesButton.bounds.size.height);
+    //    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:pathFrame cornerRadius:exercisesButton.layer.cornerRadius];
+    //
+    //    CAShapeLayer *circleShape = [CAShapeLayer layer];
+    //    circleShape.path = path.CGPath;
+    //    circleShape.position = exercisesButton.layer.position;
+    //    circleShape.fillColor = [UIColor clearColor].CGColor;
+    //    circleShape.opacity = 0;
+    //    circleShape.strokeColor = [UIColor blackColor].CGColor;
+    //    circleShape.lineWidth = 1.0f;
+    //
+    //    [self.view.layer addSublayer:circleShape];
+    //
+    //    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    //    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
+    //    scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(2.5, 2.5, 1)];
+    //
+    //    CABasicAnimation *alphaAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    //    alphaAnimation.fromValue = @1;
+    //    alphaAnimation.toValue = @0;
+    //
+    //    CAAnimationGroup *animation = [CAAnimationGroup animation];
+    //    animation.animations = @[scaleAnimation, alphaAnimation];
+    //    animation.duration = 1.5f;
+    //    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    //    [circleShape addAnimation:animation forKey:nil];
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -239,26 +277,45 @@
     //Calendar
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
-    NSDateComponents *oneDayAgoComponents = [[NSDateComponents alloc] init];
-    oneDayAgoComponents.day = -1;
-    NSDate *oneDayAgo = [calendar dateByAddingComponents:oneDayAgoComponents toDate:[NSDate date] options:0];
+    NSDate *todaysDate = [NSDate date];
+    NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
+    //NSDateComponents *simulator = [[NSDateComponents alloc] init];
+    //[simulator setHour:-5]; for simulator
     
-    NSDateComponents *oneDayForwardComponents = [[NSDateComponents alloc] init];
-    oneDayForwardComponents.day = 1;
-    NSDate *oneDayForward = [calendar dateByAddingComponents:oneDayForwardComponents toDate:[NSDate date] options:0];
+    todaysDate = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:todaysDate]];
     
-    NSPredicate *calendarPredicate = [eventStore predicateForEventsWithStartDate:oneDayAgo endDate:oneDayForward calendars:nil];
+    NSDateComponents *endOfTodayComp = [[NSDateComponents alloc] init];
+    endOfTodayComp.day = 1;
+    NSDate *endOfToday = [calendar dateByAddingComponents:endOfTodayComp toDate:todaysDate options:0];
     
-    NSArray *myEvents = [[NSArray alloc] init];
-    myEvents = [eventStore eventsMatchingPredicate:calendarPredicate];
-    self.calendarEvents = myEvents;
-    
-    numCalendarEventsLabel.text = [NSString stringWithFormat:@"%d", [self.calendarEvents count]];
+    NSDateComponents *endOfTomorrowComp = [[NSDateComponents alloc] init];
+    endOfTomorrowComp.day = 2;
+    NSDate *endOfTomorrow = [calendar dateByAddingComponents:endOfTomorrowComp toDate:todaysDate options:0];
     
     
-    //for (int i=0; i < calendarEvents.count ; i++) {
-    //    NSLog(@"%@", [calendarEvents objectAtIndex:i]);
-    //}
+    NSLog(@"LOOOK HERE %@, %@, %@", todaysDate, endOfToday, endOfTomorrow);
+
+    
+    NSPredicate *calendarPredicateToday = [eventStore predicateForEventsWithStartDate:todaysDate endDate:endOfToday calendars:nil];
+    NSPredicate *calendarPredicateTomorrow = [eventStore predicateForEventsWithStartDate:endOfToday endDate:endOfTomorrow calendars:nil];
+    
+    //add a try - catch block because of the sigkill.  Maybe there is a better way to do calendar.
+    //dies when there are no events.
+
+    calendarEventsToday = [eventStore eventsMatchingPredicate:calendarPredicateToday];
+    calendarEventsTomorrow = [eventStore eventsMatchingPredicate:calendarPredicateTomorrow];
+    
+    NSLog(@"%@, TOMRROW %@", calendarEventsToday, calendarEventsTomorrow);
+    
+    numCalendarEventsLabel.text = [NSString stringWithFormat:@"%d", [self.calendarEventsToday count]];
+    
+    if ([self.calendarEventsToday count] >= 4) {
+        calenderEvent1.text = [[calendarEventsToday objectAtIndex:0] title];
+        calenderEvent2.text = [[calendarEventsToday objectAtIndex:1] title];
+        calenderEvent3.text = [[calendarEventsToday objectAtIndex:2] title];
+        calenderEvent4.text = [[calendarEventsToday objectAtIndex:3] title];
+    }
+
 
 }
 
@@ -279,6 +336,30 @@
     }
 }
 
+#pragma mark - Functions to help initialize all the view objects
+- (void)createButton:(NSString *)name withRect:(CGRect)rect
+{
+    UIButton *newButton= [[UIButton alloc] initWithFrame:rect];
+    newButton.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0];
+    [newButton setTitle:name forState:UIControlStateNormal];
+    newButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:32];
+    newButton.titleLabel.textColor = [UIColor whiteColor];
+    newButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    newButton.layer.cornerRadius = 2;
+    [self.view addSubview:newButton];
+    
+    if([name isEqualToString:@"I work out."]) {
+        [newButton addTarget:self action:@selector(showExercises) forControlEvents:UIControlEventTouchUpInside];
+    } else if ([name isEqualToString:@"I meet people."]) {
+        [newButton addTarget:self action:@selector(showTodaysCalendarEvents) forControlEvents:UIControlEventTouchUpInside];
+    } else if ([name isEqualToString:@"I dream big."]) {
+        [newButton addTarget:self action:@selector(showGoals) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        NSLog(@"Wrong button name");
+    }
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -297,6 +378,13 @@
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"Could not find location: %@", error);
+}
+
+# pragma mark - Button Methods
+
+- (void)showGoals
+{
+    NSLog(@"Show goals");
 }
 
 - (void)showTodaysCalendarEvents
@@ -320,7 +408,8 @@
     self.isComingFromCalendarView = TRUE;
         
     UPLCalendarViewController *popupCalendarViewController = [[UPLCalendarViewController alloc] init];
-    popupCalendarViewController.calendarEvents = self.calendarEvents;
+    popupCalendarViewController.calendarEventsToday = self.calendarEventsToday;
+    popupCalendarViewController.calendarEventsTomorrow = self.calendarEventsTomorrow;
     popupCalendarViewController.transitioningDelegate = self.transitioningDelegate;
     popupCalendarViewController.modalPresentationStyle = UIModalPresentationCustom;
     
@@ -391,13 +480,11 @@
         CLPlacemark *placemark = placemarks[0];
         NSLog(@"Found %@", placemark.name);
         self.locationCity.text = placemark.locality;
-        //NSLog(@"Finding address");
-        //if (error) {
-        //    NSLog(@"Error %@", error.description);
-        //} else {
-        //    CLPlacemark *placemark = [placemarks lastObject];
-        //    self.locationCity.text = [NSString stringWithFormat:@"%d", ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO)];
-        //}
+        
+        //Stop Updating Location
+        [locationManager stopUpdatingLocation];
+        [locationManager stopUpdatingHeading];
+
     }];
 }
 

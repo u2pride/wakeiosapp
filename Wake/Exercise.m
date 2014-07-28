@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 U2PrideLabs. All rights reserved.
 //
 
+
+//ADD: ID to each exercise to be able to distinguish. Before adding core data.
+
 #import "Exercise.h"
 
 @implementation Exercise
@@ -23,7 +26,7 @@
         _exerciseName = name;
         _numOfReps = reps;
         _numOfSets = sets;
-        
+        _type = @"default";
     }
     
     return self;
