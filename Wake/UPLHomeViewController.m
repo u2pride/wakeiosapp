@@ -93,8 +93,6 @@
     
     
 
-    
-
     // Calendar - Num of Events and Transparent Event Title Labels
     // ----------------------------------------------
     
@@ -201,6 +199,91 @@
     
     
     
+    /*
+     {
+     CALayer *layer in implementaion
+    
+    UIImageView *imageView;
+    
+    UIView *blueView = [[UIView alloc] initWithFrame:self.view.frame];
+    blueView.backgroundColor = [UIColor blueColor];
+    imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
+    imageView.image = [UIImage imageNamed:@"twitterscreen"];
+    //[self.view addSubview:blueView];
+    
+    mask = [[CALayer alloc] init];
+    mask.contents = (__bridge id)([UIImage imageNamed:@"slice"].CGImage);
+    mask.bounds = CGRectMake(0, 0, 400, 50);
+    mask.anchorPoint = CGPointMake(0.5, 0.5);
+    mask.position = CGPointMake(blueView.frame.size.width/2, blueView.frame.size.height/2);
+    self.view.layer.mask = mask;
+    
+    CAKeyframeAnimation *keyFrameAnimation = [[CAKeyframeAnimation alloc] init];
+    keyFrameAnimation.keyPath = @"bounds";
+    keyFrameAnimation.delegate = self;
+    keyFrameAnimation.duration = 3;
+    keyFrameAnimation.beginTime = CACurrentMediaTime() + 1;
+    NSValue *initialBounds = [NSValue valueWithCGRect:mask.bounds];
+    NSValue *secondBounds = [NSValue valueWithCGRect:CGRectMake(0, 0, 400, 20)];
+    NSValue *finalBounds = [NSValue valueWithCGRect:CGRectMake(0, 0, 1600, 1600)];
+    keyFrameAnimation.values = @[initialBounds, secondBounds, finalBounds];
+    keyFrameAnimation.keyTimes = @[@0.0, @0.3, @1.0];
+    keyFrameAnimation.timingFunctions = [NSArray arrayWithObjects:
+                                        [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                        [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut], nil];
+    
+    [mask addAnimation:keyFrameAnimation forKey:@"bounds"];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2.9 target:self selector:@selector(finishIntroAnimation) userInfo:nil repeats:NO];
+    
+    */
+    /*  Sample CA Frame Animation Code
+     
+     
+     CALayer* theLayer = myView.layer;
+     CAKeyframeAnimation* animation;
+     animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
+     
+     animation.duration = 1.6;
+     //animation.cumulative = YES;
+     animation.repeatCount = 1;
+     animation.removedOnCompletion = NO;
+     animation.fillMode = kCAFillModeForwards;
+     
+     animation.values = [NSArray arrayWithObjects:
+     [NSNumber numberWithFloat:0.0 * M_PI],
+     [NSNumber numberWithFloat:(15.0/180.0) * M_PI],
+     [NSNumber numberWithFloat:(30.0/180.0) * M_PI], // animation stops here...
+     [NSNumber numberWithFloat:(45.0/180.0) * M_PI], // ignored!
+     [NSNumber numberWithFloat:(190.0/180.0) * M_PI], nil]; // ignored!
+     
+     animation.keyTimes = [NSArray arrayWithObjects:
+     [NSNumber numberWithFloat:0.0],
+     [NSNumber numberWithFloat:0.2],
+     [NSNumber numberWithFloat:0.4], // ignored!
+     [NSNumber numberWithFloat:0.8], // ignored!
+     [NSNumber numberWithFloat:1.6], nil]; // ignored!
+     
+     animation.timingFunctions = [NSArray arrayWithObjects:
+     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
+     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear], nil];
+     
+     [theLayer addAnimation:animation forKey:@"transform.rotation.z"];
+     
+     
+     - (void) finishIntroAnimation
+     {
+     NSLog(@"Remove from superlayer");
+     [mask removeFromSuperlayer];
+     self.view.layer.mask = nil;
+     
+     }
+     */
+    
+    
     
     
     
@@ -263,9 +346,12 @@
     
 }
 
+
+
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
     
     //Get access to the database of events
     EKEventStore *eventStore = [[EKEventStore alloc] init];
