@@ -25,11 +25,14 @@
     if (self) {
         _exerciseName = name;
         _numOfReps = reps;
+        _currentNumOfReps = reps;
         _numOfSets = sets;
+        _currentNumOfSets = sets;
         _type = @"default";
     }
     
     return self;
 }
+
 
 @end

@@ -9,6 +9,7 @@
 #import "UPLExercisesViewController.h"
 #import "UPLExerciseCell.h"
 #import "Exercise.h"
+#import "ExerciseStore.h"
 #import "UPLExerciseSummary.h"
 
 const CGFloat kPaddingAmount = 22.0f;
@@ -20,6 +21,7 @@ const CGFloat kPaddingAmount = 22.0f;
 
 @property (nonatomic, strong) NSMutableArray *exercisesList;
 @property (nonatomic, strong) UPLExerciseSummary *exerciseSummaryView;
+@property (nonatomic, strong) ExerciseStore *exerciseStore;
 
 
 @end
@@ -52,6 +54,7 @@ const CGFloat kPaddingAmount = 22.0f;
     [self.view addSubview:self.exerciseTableView];
     
     self.exercisesList = [[NSMutableArray alloc] init];
+    self.exerciseStore = [[ExerciseStore alloc] init];
     
     Exercise *abs = [[Exercise alloc] initWithExerciseName:@"Abs" withNumReps:15 withNumSets:3];
     Exercise *back = [[Exercise alloc] initWithExerciseName:@"Back" withNumReps:10 withNumSets:3];
@@ -64,6 +67,17 @@ const CGFloat kPaddingAmount = 22.0f;
     Exercise *abs3 = [[Exercise alloc] initWithExerciseName:@"Abs" withNumReps:15 withNumSets:3];
     Exercise *back3 = [[Exercise alloc] initWithExerciseName:@"Back" withNumReps:10 withNumSets:3];
     Exercise *legs3 = [[Exercise alloc] initWithExerciseName:@"Legs" withNumReps:15 withNumSets:3];
+    
+    [self.exerciseStore addExercise:abs];
+    [self.exerciseStore addExercise:back];
+    [self.exerciseStore addExercise:legs];
+    [self.exerciseStore addExercise:abs2];
+    [self.exerciseStore addExercise:back2];
+    [self.exerciseStore addExercise:legs2];
+    [self.exerciseStore addExercise:abs3];
+    [self.exerciseStore addExercise:back3];
+    [self.exerciseStore addExercise:legs3];
+
     
     [self.exercisesList addObject:abs];
     [self.exercisesList addObject:back];
@@ -230,8 +244,12 @@ const CGFloat kPaddingAmount = 22.0f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"Number of Exercises: %i", self.exercisesList.count);
-    return self.exercisesList.count;
+    //NSLog(@"Number of Exercises: %i", self.exercisesList.count);
+    //return self.exercisesList.count;
+    
+    NSLog(@"Number of Exercises: %i", [self.exerciseStore allExercises].count);
+    return [self.exerciseStore allExercises].count;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -244,13 +262,19 @@ const CGFloat kPaddingAmount = 22.0f;
         newCell = [nib objectAtIndex:0];
     }
     
-    Exercise *currentExercise = [self.exercisesList objectAtIndex:indexPath.row];
+    //Exercise *currentExercise = [self.exercisesList objectAtIndex:indexPath.row];
+    Exercise *currentExercise = [[self.exerciseStore allExercises] objectAtIndex:indexPath.row];
     
     newCell.priorityColor.backgroundColor = [UIColor blueColor];
     newCell.exerciseTitle.text = currentExercise.exerciseName;
     newCell.numSets.text = [NSString stringWithFormat:@"%i", currentExercise.numOfSets];
     newCell.numReps.text = [NSString stringWithFormat:@"%i", currentExercise.numOfReps];
     newCell.backgroundColor = [UIColor clearColor];
+    
+    //Removing Selected State Change
+    UIView *cellSelectedBackgroundView = [[UIView alloc] initWithFrame:newCell.frame];
+    cellSelectedBackgroundView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:256 alpha:0.05];
+    newCell.selectedBackgroundView = cellSelectedBackgroundView;
 
     return newCell;
 }
@@ -271,8 +295,17 @@ const CGFloat kPaddingAmount = 22.0f;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"selected: %d", indexPath.row);
+    
+    UPLExerciseCell *cell = (UPLExerciseCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    //Exercise *currentExercise = [self.exercisesList objectAtIndex:indexPath.row];
+    Exercise *currentExercise = [[self.exerciseStore allExercises] objectAtIndex:indexPath.row];
+    
+    //Write the logic for decrementing sets inside the Exercise Class.
+    [self.exerciseStore decrementNumRepsForExercise:currentExercise];
+    cell.numReps.text = [NSString stringWithFormat:@"%i", currentExercise.currentNumOfReps];
+    cell.numSets.text = [NSString stringWithFormat:@"%i", currentExercise.currentNumOfSets];
 }
-
 
 #pragma mark - Common Methods
 
@@ -286,6 +319,7 @@ const CGFloat kPaddingAmount = 22.0f;
 {
     return YES;
 }
+
 
 /*
 #pragma mark - Navigation

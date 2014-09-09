@@ -49,6 +49,20 @@
     [allExercises removeObject:exerciseToRemove];
 }
 
+- (void)decrementNumRepsForExercise:(Exercise *)exercise
+{
+    if (exercise.currentNumOfReps == 0 && exercise.currentNumOfSets == 0) {
+        return;
+    } else if (exercise.currentNumOfReps == 1 && exercise.currentNumOfSets != 0) {
+        exercise.currentNumOfReps = exercise.numOfReps;
+        exercise.currentNumOfSets -= 1;
+    } else if (exercise.currentNumOfReps == 1 && exercise.currentNumOfSets == 0) {
+        exercise.currentNumOfReps = 0;
+    } else {
+        exercise.currentNumOfReps -= 1;
+    }
+}
+
 
 
 @end

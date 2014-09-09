@@ -22,4 +22,6 @@
 - (void)addExercise:(Exercise *)exerciseToAdd;
 - (void)removeExercise:(Exercise *)exerciseToRemove;
 
+- (void)decrementNumRepsForExercise:(Exercise *)exercise;
+
 @end

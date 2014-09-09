@@ -14,7 +14,11 @@
 
 @property (nonatomic, strong) NSString *exerciseName;
 @property (nonatomic) int numOfSets;
+@property (nonatomic) int currentNumOfSets;
+
 @property (nonatomic) int numOfReps;
+@property (nonatomic) int currentNumOfReps;
+
 @property (nonatomic, strong) NSString *type;
 
 @end
