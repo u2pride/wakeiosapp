@@ -16,6 +16,9 @@
 #import "UPLExercisesViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <AddressBookUI/AddressBookUI.h>
+#import <HueSDK_iOS/HueSDK.h>
+#import "UPLStockHueViewController.h"
+
 
 
 @interface UPLHomeViewController ()
@@ -196,8 +199,20 @@
     [self createButton:@"I dream big." withRect:CGRectMake(0, 450, self.view.frame.size.width, 50)];
     
     
+    CGRect buttonFrame = CGRectMake(20, 525, 160, 50);
+    UIButton *stocksButton = [[UIButton alloc] initWithFrame:buttonFrame];
+    stocksButton.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0];
+    [stocksButton setTitle:@"Stock Visualization" forState:UIControlStateNormal];
+    stocksButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
+    stocksButton.titleLabel.textColor = [UIColor whiteColor];
+    stocksButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    stocksButton.layer.cornerRadius = 2;
+    [self.view addSubview:stocksButton];
+    
+    [stocksButton addTarget:self action:@selector(viewStocks) forControlEvents:UIControlEventTouchUpInside];
     
     
+
     
     /*
      {
@@ -470,7 +485,37 @@
 
 - (void)showGoals
 {
+    //Show the UPLStockHueViewController
+    
+    UPLStockHueViewController *stockHueVC = [[UPLStockHueViewController alloc] init];
+    [self presentViewController:stockHueVC animated:YES completion:^(void){}];
+    
+    /*
+    //Messing with the Hue Lights
+    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    //NSArray *myLights = [cache.lights allValues];
+    
+    PHLight *light = [cache.lights objectForKey:@"2"];
+    PHLightState *state = light.lightState;
+    state.brightness = @50;
+    
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    
+    [bridgeSendAPI updateLightStateForId:light.identifier withLightState:state completionHandler:^(NSArray *errors) {
+        if (!errors) {
+            NSLog(@"Update Sucessful");
+        } else {
+            NSLog(@"Update Failed");
+        }
+    }];
+    
+    */
     NSLog(@"Show goals");
+}
+
+- (void)viewStocks {
+    
+    NSLog(@"Ya pressed me");
 }
 
 - (void)showTodaysCalendarEvents

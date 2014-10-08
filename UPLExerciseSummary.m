@@ -73,9 +73,9 @@ static CGFloat const kBarGraphBottomY = 270.0;
     _textHeaderColor = UPLBarColor;
     _percentageColor = UPLBarColor;
     _headerTitles = [NSMutableArray arrayWithArray:@[@"Essential", @"Optional", @"Stretches"]];
-    _barOneValue = 140;
+    _barOneValue = 60;
     _barTwoValue = 80;
-    _barThreeValue = 110;
+    _barThreeValue = 10;
     [self createBarsAndHeaders];
     
 }
@@ -288,6 +288,8 @@ static CGFloat const kBarGraphBottomY = 270.0;
 
 - (void)setBarOneValue:(CGFloat)value animated:(BOOL)animated
 {
+    value *= 1.7;
+
     if (value != _barOneValue) {
         
         [self willChangeValueForKey:NSStringFromSelector(@selector(barOneValue))];
@@ -301,6 +303,8 @@ static CGFloat const kBarGraphBottomY = 270.0;
 
 - (void)setBarTwoValue:(CGFloat)value animated:(BOOL)animated
 {
+    value *= 1.7;
+    
     if (value != _barTwoValue) {
         
         [self willChangeValueForKey:NSStringFromSelector(@selector(barTwoValue))];
@@ -314,6 +318,8 @@ static CGFloat const kBarGraphBottomY = 270.0;
 
 - (void)setBarThreeValue:(CGFloat)value animated:(BOOL)animated
 {
+    value *= 1.7;
+    
     if (value != _barThreeValue) {
         
         [self willChangeValueForKey:NSStringFromSelector(@selector(barThreeValue))];

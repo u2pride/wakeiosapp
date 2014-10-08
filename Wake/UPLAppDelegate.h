@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <HueSDK_iOS/HueSDK.h>
+
+@class PHHueSDK;
 
 @interface UPLAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) PHHueSDK *phHueSDK;
+
+#pragma mark - HueSDK
+
 
 @end

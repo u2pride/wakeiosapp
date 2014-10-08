@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		A2EA0697C4B34DF0BD80372D /* libPods-Wake.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43ED03F8512D40D79FCE735C /* libPods-Wake.a */; };
+		A42CC10A19D8EB1000EBB263 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A42CC10919D8EB1000EBB263 /* HueSDK_iOS.framework */; };
+		A42CC11B19D8EB8400EBB263 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A42CC10D19D8EB8400EBB263 /* DDAbstractDatabaseLogger.m */; };
+		A42CC11C19D8EB8400EBB263 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A42CC10F19D8EB8400EBB263 /* DDASLLogger.m */; };
+		A42CC11D19D8EB8400EBB263 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A42CC11119D8EB8400EBB263 /* DDFileLogger.m */; };
+		A42CC11E19D8EB8400EBB263 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A42CC11319D8EB8400EBB263 /* DDLog.m */; };
+		A42CC11F19D8EB8400EBB263 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A42CC11519D8EB8400EBB263 /* DDTTYLogger.m */; };
+		A42CC12019D8EB8400EBB263 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A42CC11819D8EB8400EBB263 /* ContextFilterLogFormatter.m */; };
+		A42CC12119D8EB8400EBB263 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A42CC11A19D8EB8400EBB263 /* DispatchQueueLogFormatter.m */; };
 		A42CF92D1962585800321345 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = A42CF92C1962585800321345 /* Weather.m */; };
 		A436A7E3197D56D4003CF07B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A436A7E2197D56D4003CF07B /* CoreLocation.framework */; };
 		A436A7E5197D772E003CF07B /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A436A7E4197D772E003CF07B /* AddressBookUI.framework */; };
@@ -34,6 +42,7 @@
 		A4C1B393195759B900518BF4 /* WakeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C1B392195759B900518BF4 /* WakeTests.m */; };
 		A4C1B39E19575AD400518BF4 /* UPLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C1B39D19575AD400518BF4 /* UPLHomeViewController.m */; };
 		A4C1B3A11957635D00518BF4 /* UPLCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C1B3A01957635D00518BF4 /* UPLCalendarViewController.m */; };
+		A4D4BC5919E4D4AE00E164B0 /* UPLStockHueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4BC5819E4D4AE00E164B0 /* UPLStockHueViewController.m */; };
 		A4FF4ECB19AF9F2000B20B22 /* UPLExerciseSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FF4ECA19AF9F2000B20B22 /* UPLExerciseSummary.m */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +58,21 @@
 
 /* Begin PBXFileReference section */
 		43ED03F8512D40D79FCE735C /* libPods-Wake.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wake.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A42CC10919D8EB1000EBB263 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
+		A42CC10C19D8EB8400EBB263 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		A42CC10D19D8EB8400EBB263 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		A42CC10E19D8EB8400EBB263 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		A42CC10F19D8EB8400EBB263 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		A42CC11019D8EB8400EBB263 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		A42CC11119D8EB8400EBB263 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		A42CC11219D8EB8400EBB263 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		A42CC11319D8EB8400EBB263 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		A42CC11419D8EB8400EBB263 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		A42CC11519D8EB8400EBB263 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		A42CC11719D8EB8400EBB263 /* ContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		A42CC11819D8EB8400EBB263 /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		A42CC11919D8EB8400EBB263 /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		A42CC11A19D8EB8400EBB263 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		A42CF92B1962585800321345 /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
 		A42CF92C1962585800321345 /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
 		A436A7E2197D56D4003CF07B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -90,6 +114,8 @@
 		A4C1B39D19575AD400518BF4 /* UPLHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPLHomeViewController.m; sourceTree = "<group>"; };
 		A4C1B39F1957635D00518BF4 /* UPLCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPLCalendarViewController.h; sourceTree = "<group>"; };
 		A4C1B3A01957635D00518BF4 /* UPLCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPLCalendarViewController.m; sourceTree = "<group>"; };
+		A4D4BC5719E4D4AE00E164B0 /* UPLStockHueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPLStockHueViewController.h; sourceTree = "<group>"; };
+		A4D4BC5819E4D4AE00E164B0 /* UPLStockHueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPLStockHueViewController.m; sourceTree = "<group>"; };
 		A4FF4EC919AF9F2000B20B22 /* UPLExerciseSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UPLExerciseSummary.h; path = ../UPLExerciseSummary.h; sourceTree = "<group>"; };
 		A4FF4ECA19AF9F2000B20B22 /* UPLExerciseSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UPLExerciseSummary.m; path = ../UPLExerciseSummary.m; sourceTree = "<group>"; };
 		DEEC972F387B43C6A985C6A5 /* Pods-Wake.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wake.xcconfig"; path = "Pods/Pods-Wake.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +130,7 @@
 				A436A7E3197D56D4003CF07B /* CoreLocation.framework in Frameworks */,
 				A4C1B370195759B900518BF4 /* CoreGraphics.framework in Frameworks */,
 				A4C1B372195759B900518BF4 /* UIKit.framework in Frameworks */,
+				A42CC10A19D8EB1000EBB263 /* HueSDK_iOS.framework in Frameworks */,
 				A4C1B36E195759B900518BF4 /* Foundation.framework in Frameworks */,
 				A2EA0697C4B34DF0BD80372D /* libPods-Wake.a in Frameworks */,
 			);
@@ -122,6 +149,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A42CC10B19D8EB8400EBB263 /* Lumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				A42CC10C19D8EB8400EBB263 /* DDAbstractDatabaseLogger.h */,
+				A42CC10D19D8EB8400EBB263 /* DDAbstractDatabaseLogger.m */,
+				A42CC10E19D8EB8400EBB263 /* DDASLLogger.h */,
+				A42CC10F19D8EB8400EBB263 /* DDASLLogger.m */,
+				A42CC11019D8EB8400EBB263 /* DDFileLogger.h */,
+				A42CC11119D8EB8400EBB263 /* DDFileLogger.m */,
+				A42CC11219D8EB8400EBB263 /* DDLog.h */,
+				A42CC11319D8EB8400EBB263 /* DDLog.m */,
+				A42CC11419D8EB8400EBB263 /* DDTTYLogger.h */,
+				A42CC11519D8EB8400EBB263 /* DDTTYLogger.m */,
+				A42CC11619D8EB8400EBB263 /* Extensions */,
+			);
+			path = Lumberjack;
+			sourceTree = "<group>";
+		};
+		A42CC11619D8EB8400EBB263 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A42CC11719D8EB8400EBB263 /* ContextFilterLogFormatter.h */,
+				A42CC11819D8EB8400EBB263 /* ContextFilterLogFormatter.m */,
+				A42CC11919D8EB8400EBB263 /* DispatchQueueLogFormatter.h */,
+				A42CC11A19D8EB8400EBB263 /* DispatchQueueLogFormatter.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A4585D79197EA69C0069A326 /* Exercise Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +220,7 @@
 				A4C1B373195759B900518BF4 /* Wake */,
 				A4C1B38C195759B900518BF4 /* WakeTests */,
 				A4C1B36C195759B900518BF4 /* Frameworks */,
+				A42CC10B19D8EB8400EBB263 /* Lumberjack */,
 				A4C1B36B195759B900518BF4 /* Products */,
 				DEEC972F387B43C6A985C6A5 /* Pods-Wake.xcconfig */,
 			);
@@ -181,6 +238,7 @@
 		A4C1B36C195759B900518BF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A42CC10919D8EB1000EBB263 /* HueSDK_iOS.framework */,
 				A436A7E4197D772E003CF07B /* AddressBookUI.framework */,
 				A436A7E2197D56D4003CF07B /* CoreLocation.framework */,
 				A4C1B36D195759B900518BF4 /* Foundation.framework */,
@@ -201,6 +259,8 @@
 				A4C1B39D19575AD400518BF4 /* UPLHomeViewController.m */,
 				A4C1B39F1957635D00518BF4 /* UPLCalendarViewController.h */,
 				A4C1B3A01957635D00518BF4 /* UPLCalendarViewController.m */,
+				A4D4BC5719E4D4AE00E164B0 /* UPLStockHueViewController.h */,
+				A4D4BC5819E4D4AE00E164B0 /* UPLStockHueViewController.m */,
 				A471B4F2197355B3002DF04B /* UPLExercisesViewController.h */,
 				A471B4F3197355B3002DF04B /* UPLExercisesViewController.m */,
 				A4FF4EC919AF9F2000B20B22 /* UPLExerciseSummary.h */,
@@ -377,20 +437,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A42CC11C19D8EB8400EBB263 /* DDASLLogger.m in Sources */,
 				A42CF92D1962585800321345 /* Weather.m in Sources */,
 				A464C78B1976B3B30002FCAA /* Exercise.m in Sources */,
+				A42CC12019D8EB8400EBB263 /* ContextFilterLogFormatter.m in Sources */,
+				A42CC12119D8EB8400EBB263 /* DispatchQueueLogFormatter.m in Sources */,
 				A4A14A0B1960B5B000A58AFC /* UIImage+ImageEffects.m in Sources */,
 				A4585D78197EA6930069A326 /* ExerciseStore.m in Sources */,
 				A49CDF21195CEBCC00D4FD06 /* IDTransitionController.m in Sources */,
+				A42CC11E19D8EB8400EBB263 /* DDLog.m in Sources */,
 				A49CDF22195CEBCC00D4FD06 /* IDTransitioningDelegate.m in Sources */,
 				A4FF4ECB19AF9F2000B20B22 /* UPLExerciseSummary.m in Sources */,
 				A471B4F4197355B3002DF04B /* UPLExercisesViewController.m in Sources */,
 				A4C1B3A11957635D00518BF4 /* UPLCalendarViewController.m in Sources */,
 				A4C1B39E19575AD400518BF4 /* UPLHomeViewController.m in Sources */,
+				A42CC11D19D8EB8400EBB263 /* DDFileLogger.m in Sources */,
 				A4A14A07195F003500A58AFC /* UIImageView+LBBlurredImage.m in Sources */,
 				A4AA11E81974BDAA00E9817C /* UPLExerciseCell.m in Sources */,
+				A42CC11F19D8EB8400EBB263 /* DDTTYLogger.m in Sources */,
+				A4D4BC5919E4D4AE00E164B0 /* UPLStockHueViewController.m in Sources */,
 				A4C1B37E195759B900518BF4 /* UPLAppDelegate.m in Sources */,
 				A4C1B37A195759B900518BF4 /* main.m in Sources */,
+				A42CC11B19D8EB8400EBB263 /* DDAbstractDatabaseLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +576,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wake/Wake-Prefix.pch";
 				INFOPLIST_FILE = "Wake/Wake-Info.plist";
@@ -522,6 +594,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wake/Wake-Prefix.pch";
 				INFOPLIST_FILE = "Wake/Wake-Info.plist";

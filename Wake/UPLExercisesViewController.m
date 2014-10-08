@@ -11,6 +11,7 @@
 #import "Exercise.h"
 #import "ExerciseStore.h"
 #import "UPLExerciseSummary.h"
+#import "UPLHomeViewController.h"
 
 const CGFloat kPaddingAmount = 22.0f;
 
@@ -117,6 +118,10 @@ const CGFloat kPaddingAmount = 22.0f;
     craigAlexanderPicture.center = CGPointMake(220, 70);
     [header addSubview:craigAlexanderPicture];
     
+    
+    [craigAlexanderPicture addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeExercises)]];
+    
+    craigAlexanderPicture.userInteractionEnabled = YES;
     
     //Frames
     CGRect firstNameFrame = CGRectMake(kPaddingAmount, 30, craigAlexanderPicture.frame.origin.x - kPaddingAmount, 50);
@@ -231,9 +236,9 @@ const CGFloat kPaddingAmount = 22.0f;
 
 - (void)addNewExercise
 {
-    int randomNum = arc4random() % 170;
-    [self.exerciseSummaryView setBarOneValue:170 animated:YES];
-    [self.exerciseSummaryView setBarTwoValue:160 animated:YES];
+    int randomNum = arc4random() % 100;
+    [self.exerciseSummaryView setBarOneValue:80 animated:YES];
+    [self.exerciseSummaryView setBarTwoValue:60 animated:YES];
     [self.exerciseSummaryView setBarThreeValue:randomNum animated:YES];
 }
 
@@ -301,10 +306,30 @@ const CGFloat kPaddingAmount = 22.0f;
     //Exercise *currentExercise = [self.exercisesList objectAtIndex:indexPath.row];
     Exercise *currentExercise = [[self.exerciseStore allExercises] objectAtIndex:indexPath.row];
     
-    //Write the logic for decrementing sets inside the Exercise Class.
+    
+    if (currentExercise.currentNumOfReps == 1 & currentExercise.currentNumOfSets == 1) {
+        cell.numSets.hidden = YES;
+        cell.numReps.hidden = YES;
+        cell.alpha = 0.2;
+        [self.exerciseSummaryView setBarOneValue:50 animated:YES];
+        [self.exerciseTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+    }
+    
     [self.exerciseStore decrementNumRepsForExercise:currentExercise];
+    
     cell.numReps.text = [NSString stringWithFormat:@"%i", currentExercise.currentNumOfReps];
     cell.numSets.text = [NSString stringWithFormat:@"%i", currentExercise.currentNumOfSets];
+    
+}
+
+
+-(void)closeExercises {
+    NSLog(@"Close Exercises");
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+
+    UPLHomeViewController *homeController = (UPLHomeViewController*) self.presentingViewController;
+    homeController.isComingFromCalendarView = TRUE;
+    [homeController viewWillAppear:YES];
 }
 
 #pragma mark - Common Methods
